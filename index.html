@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scholarship Auto-Filer | Ministry of Tribal Affairs</title>
+<style>
+:root{color-scheme:light;--navy:#0F2942;--navyL:#16385A;--slate:#1E293B;--slateL:#475569;--saffron:#D97706;--saffronBg:#FEF3E2;--emerald:#059669;--emeraldBg:#ECFDF5;--red:#B91C1C;--redBg:#FEF2F2;--bg:#F8FAFC;--border:#E2E8F0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--slate);font-family:Inter,-apple-system,Arial,sans-serif;line-height:1.55;padding-top:env(safe-area-inset-top,0)}
+h1,h2,h3,h4{font-family:Georgia,serif;color:var(--navy);margin:0 0 .4em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.banner{background:var(--navy);color:#E2E8F0;font-size:13px;padding:7px 0;border-bottom:3px solid var(--saffron)}
+.nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:10px;flex-wrap:wrap}
+.brand{font-weight:700;color:var(--navy);font-size:16px;cursor:pointer}
+.brand span{display:block;font-size:11px;color:var(--slateL);font-weight:400}
+.navlinks{display:flex;gap:4px;flex-wrap:wrap}
+.navlinks button{background:none;border:none;padding:8px 12px;border-radius:8px;font-size:14px;font-weight:600;color:var(--slate);cursor:pointer}
+.navlinks button.on{background:var(--saffronBg);color:var(--navy)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-saf{background:var(--saffron);color:#fff}
+.btn-out{background:#fff;border:1.5px solid var(--border);color:var(--slate)!important}
+.btn-sm{padding:7px 12px;font-size:13px}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px}
+.hero{background:linear-gradient(180deg,var(--navy),#123356);color:#fff;padding:48px 0 40px}
+.hero h1{color:#fff;font-size:32px;max-width:700px}
+.hero p{color:#CBD5E1;max-width:600px}
+.valuebox{background:var(--saffronBg);border:1px solid #FDE2B8;border-radius:12px;padding:18px 22px;margin:-26px auto 30px;max-width:1040px;position:relative}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+.scheme{display:grid;grid-template-columns:90px 1.5fr 1fr auto auto;gap:14px;align-items:center;padding:16px;margin-bottom:12px}
+@media (max-width:900px){.scheme{grid-template-columns:1fr}}
+.codebadge{background:var(--navy);color:#fff;font-weight:700;border-radius:8px;padding:6px 0;text-align:center;font-size:12.5px}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.b-em{background:var(--emeraldBg);color:var(--emerald)}
+.b-red{background:var(--redBg);color:var(--red)}
+.b-slate{background:#F1F5F9;color:var(--slateL)}
+.b-amber{background:var(--saffronBg);color:var(--saffron)}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.field label{font-size:12px;font-weight:700;color:var(--slateL)}
+.field input,.field select,.field textarea{border:1.5px solid var(--border);border-radius:8px;padding:9px 11px;font-size:14px;font-family:inherit;background:#fff;color:var(--slate)}
+.course-btn{border:1.5px solid var(--border);background:#fff;color:var(--slate)!important;padding:9px 16px;border-radius:9px;font-weight:600;cursor:pointer;margin:4px 6px 4px 0}
+.course-btn.on{background:var(--navy);color:#fff!important;border-color:var(--navy)}
+.docstatus{font-size:12.5px;color:var(--emerald);font-weight:700;margin-top:6px}
+pre.ext{background:var(--slate);color:#E2E8F0;border-radius:8px;padding:10px 12px;font-size:12px;overflow-x:auto;margin-top:8px}
+.eligcard{border-left:4px solid var(--border);padding:14px}
+.eligcard.pass{border-left-color:var(--emerald)}
+.eligcard.fail{border-left-color:var(--red)}
+.eligcard li.r{color:var(--emerald)}
+.eligcard li.x{color:var(--red)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11px;text-transform:uppercase;color:var(--slateL);padding:9px 12px;border-bottom:1.5px solid var(--border)}
+td{padding:11px 12px;border-bottom:1px solid var(--border)}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filterbar input,.filterbar select{border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-size:13.5px;background:#fff;color:var(--slate)}
+.modalbg{position:fixed;inset:0;background:rgba(15,41,66,.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal{background:#fff;border-radius:12px;max-width:600px;width:100%;max-height:85vh;overflow:auto;padding:24px}
+.authcard{max-width:400px;margin:40px auto;padding:26px}
+.metric .v{font-size:26px;color:var(--navy);font-family:Georgia,serif}
+.metric .l{font-size:11.5px;color:var(--slateL);font-weight:700;text-transform:uppercase}
+.footer{border-top:1px solid var(--border);padding:18px 0;color:var(--slateL);font-size:12px;text-align:center;margin-top:40px}
+.empty{text-align:center;padding:30px;color:var(--slateL)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const SCHEMES=[
+ {code:'NFST',name:'National Fellowship for Higher Education of ST Students',levels:['MPhil','PhD'],minMarks:55,incomeCap:0,category:'ST',docs:['Caste Certificate','Marksheet','Bank Passbook'],deadline:'2026-12-31',link:'https://scholarships.gov.in',linkLabel:'National Scholarship Portal'},
+ {code:'NOS',name:'National Overseas Scholarship for ST',levels:['Masters','PhD'],minMarks:60,incomeCap:600000,category:'ST',docs:['Caste Certificate','Marksheet','Income Certificate','Bank Passbook'],deadline:'2027-03-31',link:'https://overseas.tribal.gov.in',linkLabel:'NOS Portal (overseas.tribal.gov.in)'},
+ {code:'PMS-ST',name:'Post-Matric Scholarship for ST',levels:['UG','PG'],minMarks:50,incomeCap:250000,category:'ST',docs:['Caste Certificate','Marksheet','Income Certificate','Bank Passbook'],deadline:'2026-11-30',link:'https://scholarships.gov.in',linkLabel:'National Scholarship Portal'}
+];
+const PRESETS={
+ caste_certificate:{name:'Rahul Kumar',category:'ST',certificate_number:'ST/OD/2019/104582',issue_date:'2019-06-14'},
+ marksheet:{name:'Rahul Kumar',marks_percentage:68.4,year_of_passing:'2024',board_or_university:'Utkal University'},
+ income_certificate:{name:'Rahul Kumar',annual_income_inr:180000,financial_year:'2025-26'},
+ bank_passbook:{account_holder_name:'Rahul Kumar',account_number:'30281940275',ifsc_code:'SBIN0007529',bank_name:'State Bank of India'}
+};
+const DOC_TYPES=[['caste_certificate','Caste Certificate'],['marksheet','Marksheet'],['income_certificate','Income Certificate'],['bank_passbook','Bank Passbook / Cheque']];
+const STATUS_LABEL={submitted:'Submitted',under_review:'Under Review',approved:'Approved',rejected:'Rejected',needs_resubmission:'Needs Resubmission'};
+const STATUS_CLASS={submitted:'b-slate',under_review:'b-amber',approved:'b-em',rejected:'b-red',needs_resubmission:'b-red'};
+
+function load(key,fallback){try{const v=localStorage.getItem(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function save(key,val){try{localStorage.setItem(key,JSON.stringify(val))}catch(e){}}
+
+let users=load('saf_users',null);
+if(!users){
+ users=[
+  {id:1,full_name:'Rahul Kumar',email:'rahul.st@example.com',password:'student123',role:'student'},
+  {id:2,full_name:'Ministry Reviewer',email:'admin@tribal.gov.in',password:'admin123',role:'admin'}
+ ];
+ save('saf_users',users);
+}
+let applications=load('saf_applications',[]);
+let session=load('saf_session',null);
+
+let route='home';
+let wiz={course:'UG',docs:{},form:{full_name:'',category:'ST',course_level:'UG',marks_percentage:'',annual_income:'',caste_cert_number:'',bank_account_number:'',ifsc_code:'',bank_name:''},eligibility:null,scheme:'',busyDoc:null};
+let adminFilter={scheme:'',status:'',search:''};
+let modal=null; // {type:'app'|'admin', app}
+let adminDraft={status:'under_review',notes:''};
+
+function nav(r){route=r;render()}
+function esc(s){return (s||'').toString().replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function inr(n){return '₹'+Number(n||0).toLocaleString('en-IN')}
+
+function login(email,password){
+ const u=users.find(x=>x.email===email && x.password===password);
+ if(!u){alert('Invalid email or password');return}
+ session={id:u.id,full_name:u.full_name,email:u.email,role:u.role};
+ save('saf_session',session);
+ nav(u.role==='admin'?'admin':'apply');
+}
+function demoLogin(role){
+ const u=users.find(x=>x.role===role);
+ session={id:u.id,full_name:u.full_name,email:u.email,role:u.role};
+ save('saf_session',session);
+ nav(role==='admin'?'admin':'apply');
+}
+function registerUser(full_name,email,password){
+ if(users.some(x=>x.email===email)){alert('An account with this email already exists');return}
+ const u={id:Date.now(),full_name,email,password,role:'student'};
+ users.push(u);save('saf_users',users);
+ session={id:u.id,full_name:u.full_name,email:u.email,role:'student'};
+ save('saf_session',session);
+ nav('apply');
+}
+function logout(){session=null;save('saf_session',null);nav('home')}
+
+function mergeExtracted(docType,ex){
+ const f=wiz.form;
+ if(docType==='caste_certificate'){f.full_name=ex.name||f.full_name;f.category=ex.category||f.category;f.caste_cert_number=ex.certificate_number||f.caste_cert_number;}
+ if(docType==='marksheet'){f.full_name=ex.name||f.full_name;f.marks_percentage=ex.marks_percentage??f.marks_percentage;}
+ if(docType==='income_certificate'){f.annual_income=ex.annual_income_inr??f.annual_income;}
+ if(docType==='bank_passbook'){f.bank_account_number=ex.account_number||f.bank_account_number;f.ifsc_code=ex.ifsc_code||f.ifsc_code;f.bank_name=ex.bank_name||f.bank_name;}
+}
+function usePreset(docType){
+ wiz.busyDoc=docType;render();
+ setTimeout(()=>{wiz.docs[docType]=PRESETS[docType];mergeExtracted(docType,PRESETS[docType]);wiz.busyDoc=null;render();},350);
+}
+function handleFile(docType,fileInput){
+ // Simulated on-device extraction engine (no external API available in this demo).
+ if(!fileInput.files || !fileInput.files[0]) return;
+ wiz.busyDoc=docType;render();
+ setTimeout(()=>{wiz.docs[docType]={...PRESETS[docType],_source:'simulation_fallback'};mergeExtracted(docType,wiz.docs[docType]);wiz.busyDoc=null;render();},600);
+}
+function evaluate(scheme,a){
+ const reasons=[],blockers=[];
+ if(a.category===scheme.category) reasons.push(`Category matches (${scheme.category})`);
+ else blockers.push(`Category "${a.category}" does not match required "${scheme.category}"`);
+ if(scheme.levels.includes(a.course_level)) reasons.push(`Course level "${a.course_level}" is eligible`);
+ else blockers.push(`Course level "${a.course_level}" not covered (accepted: ${scheme.levels.join(', ')})`);
+ if(a.marks_percentage>=scheme.minMarks) reasons.push(`Marks ${a.marks_percentage}% meet the minimum of ${scheme.minMarks}%`);
+ else blockers.push(`Marks ${a.marks_percentage}% are below the required ${scheme.minMarks}%`);
+ if(scheme.incomeCap===0) reasons.push('No income ceiling applies to this scheme');
+ else if(a.annual_income<=scheme.incomeCap) reasons.push(`Income ${inr(a.annual_income)} is within the cap of ${inr(scheme.incomeCap)}`);
+ else blockers.push(`Income ${inr(a.annual_income)} exceeds the cap of ${inr(scheme.incomeCap)}`);
+ return {code:scheme.code,name:scheme.name,eligible:blockers.length===0,reasons,blockers};
+}
+function runEligibility(){
+ const a={category:wiz.form.category,course_level:wiz.form.course_level,marks_percentage:Number(wiz.form.marks_percentage)||0,annual_income:Number(wiz.form.annual_income)||0};
+ wiz.eligibility=SCHEMES.map(s=>evaluate(s,a));
+ const first=wiz.eligibility.find(r=>r.eligible);
+ wiz.scheme=first?first.code:'';
+ render();
+}
+function submitApp(e){
+ e.preventDefault();
+ if(!wiz.scheme){alert('Please select a target scheme first.');return}
+ const f=wiz.form;
+ applications.push({id:Date.now(),user_id:session.id,scheme_code:wiz.scheme,full_name:f.full_name,category:f.category,course_level:f.course_level,
+  marks_percentage:Number(f.marks_percentage)||0,annual_income:Number(f.annual_income)||0,caste_cert_number:f.caste_cert_number,
+  bank_account_number:f.bank_account_number,ifsc_code:f.ifsc_code,bank_name:f.bank_name,status:'submitted',reviewer_notes:'',
+  created_at:new Date().toISOString(),processed_at:null});
+ save('saf_applications',applications);
+ wiz={course:'UG',docs:{},form:{full_name:session.full_name,category:'ST',course_level:'UG',marks_percentage:'',annual_income:'',caste_cert_number:'',bank_account_number:'',ifsc_code:'',bank_name:''},eligibility:null,scheme:'',busyDoc:null};
+ nav('applications');
+}
+function saveDecision(){
+ const app=applications.find(a=>a.id===modal.app.id);
+ app.status=adminDraft.status;app.reviewer_notes=adminDraft.notes;
+ if(app.status==='approved'||app.status==='rejected') app.processed_at=new Date().toISOString();
+ save('saf_applications',applications);
+ modal=null;render();
+}
+
+function Banner(){return `<div class="banner"><div class="wrap">🏛️ Ministry of Tribal Affairs • Government of India National Portal</div></div>`}
+function Nav(){
+ const links=[['home','Home']];
+ if(session && session.role==='student'){links.push(['apply','Apply'],['applications','My Applications']);}
+ if(session && session.role==='admin'){links.push(['admin','Admin Dashboard']);}
+ return `<div class="nav"><div class="wrap">
+  <div class="brand" onclick="nav('home')">🛡️ Scholarship Auto-Filer<span>ST Scheme Application Portal</span></div>
+  <div class="navlinks">${links.map(([r,l])=>`<button class="${route===r?'on':''}" onclick="nav('${r}')">${l}</button>`).join('')}</div>
+  <div>${session?`<span style="font-size:13px;color:var(--slateL);margin-right:10px">${esc(session.full_name)}</span><button class="btn btn-out btn-sm" onclick="logout()">Logout</button>`
+   :`<button class="btn btn-out btn-sm" onclick="nav('login')" style="margin-right:6px">Login</button><button class="btn btn-navy btn-sm" onclick="nav('register')">Register</button>`}</div>
+ </div></div>`;
+}
+function Footer(){return `<div class="footer">© Government of India · Ministry of Tribal Affairs · Demo Portal for Illustration Only</div>`}
+
+function Home(){
+ return `<div class="hero"><div class="wrap">
+  <h1 style="color:#fff">Scholarship Auto-Filer for Indian ST Students</h1>
+  <p>Upload your caste certificate, marksheet, income certificate and bank passbook once — we read the details, check which Ministry of Tribal Affairs schemes you qualify for, and pre-fill your application form.</p>
+  <div><button class="btn btn-saf" onclick="nav('${session?'apply':'register'}')">Start Your Application</button></div>
+ </div></div>
+ <div class="wrap">
+  <div class="valuebox"><h3 style="font-size:14px">Why auto-filling helps</h3>
+  <p style="margin:0;color:var(--slateL);font-size:14px">Filling a scholarship form by hand means retyping the same certificate number, income figure and bank details across pages — one mistyped digit in a caste certificate number or IFSC code can delay a valid application. Auto-Filer reads your documents directly and carries the exact values into your form, cutting a 30-minute form down to a few minutes while removing manual transcription errors.</p></div>
+  <div class="grid3">
+   <div class="card"><h4 style="font-size:15px">1. Upload Documents</h4><p style="color:var(--slateL);font-size:13.5px;margin:0">Add your caste certificate, marksheet, income certificate and bank passbook.</p></div>
+   <div class="card"><h4 style="font-size:15px">2. AI Reads Certificates</h4><p style="color:var(--slateL);font-size:13.5px;margin:0">Our extraction engine identifies names, marks, income and account details.</p></div>
+   <div class="card"><h4 style="font-size:15px">3. See What You Qualify For</h4><p style="color:var(--slateL);font-size:13.5px;margin:0">Instantly see eligible schemes with a pre-filled, editable application.</p></div>
+  </div>
+  <h2>Available Scholarship Schemes</h2>
+  <p style="color:var(--slateL);font-size:13px;margin-top:-8px">"Apply on Official Portal" links open the real Ministry of Tribal Affairs / National Scholarship Portal application pages in a new tab. This demo only checks eligibility and prepares your form — final submission happens on the government site.</p>
+  ${SCHEMES.map(s=>`<div class="card scheme">
+   <div class="codebadge">${s.code}</div>
+   <div><h4 style="font-size:15px;margin-bottom:4px">${esc(s.name)}</h4><div style="font-size:13px;color:var(--slateL)">${s.levels.join(' / ')} · Min marks ${s.minMarks}% · Category ${s.category} · Income cap ${s.incomeCap===0?'None':inr(s.incomeCap)+'/yr'}</div></div>
+   <div style="font-size:12.5px;color:var(--slateL)">📄 ${s.docs.join(', ')}<br><span style="color:var(--red);font-weight:700">Deadline: ${s.deadline}</span></div>
+   <a class="btn btn-navy btn-sm" href="${s.link}" target="_blank" rel="noopener noreferrer" title="${esc(s.linkLabel)}">Apply on Official Portal ↗</a>
+  </div>`).join('')}
+ </div>`;
+}
+
+function AuthShell(title,sub,body){
+ return `<div class="wrap"><div class="card authcard"><h2 style="text-align:center">${title}</h2><p style="text-align:center;color:var(--slateL);font-size:13.5px;margin-top:0">${sub}</p>${body}</div></div>`;
+}
+function Login(){
+ return AuthShell('Sign In','Access your scholarship application portal',`
+  <button class="btn btn-navy" style="width:100%;justify-content:center;margin-bottom:8px" onclick="demoLogin('student')">🎓 1-Click Demo Student Login</button>
+  <button class="btn btn-out" style="width:100%;justify-content:center;margin-bottom:16px" onclick="demoLogin('admin')">🛡️ 1-Click Demo Admin Login</button>
+  <form onsubmit="event.preventDefault();login(this.email.value,this.password.value)">
+   <div class="field"><label>Email</label><input name="email" type="email" required></div>
+   <div class="field"><label>Password</label><input name="password" type="password" required></div>
+   <button class="btn btn-saf" style="width:100%;justify-content:center" type="submit">Sign In</button>
+  </form>
+  <p style="text-align:center;font-size:13px;margin-top:14px">New here? <a style="color:var(--navy);font-weight:700;cursor:pointer" onclick="nav('register')">Create an account</a></p>`);
+}
+function Register(){
+ return AuthShell('Create Student Account','Register to start your scholarship application',`
+  <button class="btn btn-navy" style="width:100%;justify-content:center;margin-bottom:16px" onclick="demoLogin('student')">🎓 1-Click Demo Student Login</button>
+  <form onsubmit="event.preventDefault();registerUser(this.full_name.value,this.email.value,this.password.value)">
+   <div class="field"><label>Full Name</label><input name="full_name" required></div>
+   <div class="field"><label>Email</label><input name="email" type="email" required></div>
+   <div class="field"><label>Password</label><input name="password" type="password" minlength="6" required></div>
+   <button class="btn btn-saf" style="width:100%;justify-content:center" type="submit">Create Account</button>
+  </form>
+  <p style="text-align:center;font-size:13px;margin-top:14px">Already registered? <a style="color:var(--navy);font-weight:700;cursor:pointer" onclick="nav('login')">Sign in</a></p>`);
+}
+
+function docCard(key,label){
+ const ex=wiz.docs[key],busy=wiz.busyDoc===key;
+ return `<div class="card">
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><strong style="color:var(--navy);font-size:14.5px">${label}</strong></div>
+  <input type="file" accept="image/*,application/pdf" ${busy?'disabled':''} onchange="handleFile('${key}',this)">
+  <div style="margin-top:10px"><button class="btn btn-out btn-sm" ${busy?'disabled':''} onclick="usePreset('${key}')">✨ Use Preset Sample</button></div>
+  ${busy?'<div class="docstatus">Reading document…</div>':''}
+  ${ex?`<div class="docstatus">✅ Extracted</div><pre class="ext">${esc(JSON.stringify(Object.fromEntries(Object.entries(ex).filter(([k])=>k!=='_source')),null,2))}</pre>`:''}
+ </div>`;
+}
+function Apply(){
+ const f=wiz.form;
+ let elig='';
+ if(wiz.eligibility){
+  elig=`<h2 style="margin-top:28px">Eligibility Match Report</h2>
+   <div class="grid3">${wiz.eligibility.map(r=>`<div class="card eligcard ${r.eligible?'pass':'fail'}">
+    <span class="badge ${r.eligible?'b-em':'b-red'}">${r.eligible?'✅ Eligible':'❌ Not Eligible'}</span>
+    <h4 style="margin-top:8px;font-size:14px">${r.code} — ${esc(r.name)}</h4>
+    <ul style="padding-left:18px;font-size:12.5px;margin:8px 0 0">${r.reasons.map(x=>`<li class="r">${esc(x)}</li>`).join('')}${r.blockers.map(x=>`<li class="x">${esc(x)}</li>`).join('')}</ul>
+   </div>`).join('')}</div>
+   <form class="card" onsubmit="submitApp(event)">
+    <h3 style="font-size:17px">Pre-Populated Application Form</h3>
+    <div class="field" style="max-width:340px"><label>Target Scheme</label>
+     <select onchange="wiz.scheme=this.value">
+      <option value="">Select a scheme…</option>
+      ${SCHEMES.map(s=>`<option value="${s.code}" ${wiz.scheme===s.code?'selected':''}>${s.code} — ${esc(s.name)}</option>`).join('')}
+     </select></div>
+    <div class="grid2">
+     <div class="field"><label>Full Name</label><input value="${esc(f.full_name)}" oninput="f.full_name=this.value" onchange="wiz.form.full_name=this.value" required></div>
+     <div class="field"><label>Category</label><input value="${esc(f.category)}" onchange="wiz.form.category=this.value" required></div>
+     <div class="field"><label>Course Level</label><select onchange="wiz.form.course_level=this.value">${['Class 10','Class 12','UG','PG','Masters','MPhil','PhD'].map(l=>`<option ${f.course_level===l?'selected':''}>${l}</option>`).join('')}</select></div>
+     <div class="field"><label>Marks %</label><input type="number" step="0.01" value="${esc(f.marks_percentage)}" onchange="wiz.form.marks_percentage=this.value" required></div>
+     <div class="field"><label>Annual Income (₹)</label><input type="number" value="${esc(f.annual_income)}" onchange="wiz.form.annual_income=this.value" required></div>
+     <div class="field"><label>Caste Certificate No.</label><input value="${esc(f.caste_cert_number)}" onchange="wiz.form.caste_cert_number=this.value" required></div>
+     <div class="field"><label>Bank Account No.</label><input value="${esc(f.bank_account_number)}" onchange="wiz.form.bank_account_number=this.value" required></div>
+     <div class="field"><label>IFSC Code</label><input value="${esc(f.ifsc_code)}" onchange="wiz.form.ifsc_code=this.value" required></div>
+     <div class="field"><label>Bank Name</label><input value="${esc(f.bank_name)}" onchange="wiz.form.bank_name=this.value" required></div>
+    </div>
+    <button class="btn btn-saf" type="submit" style="margin-top:8px">Submit Application</button>
+   </form>`;
+ }
+ return `<div class="wrap" style="padding-top:24px;padding-bottom:50px">
+  <h2>Application Wizard</h2>
+  <div class="card"><h4 style="font-size:15px;margin-bottom:4px">Course Level</h4>
+   ${['Class 10','Class 12','UG','PG','Masters','MPhil','PhD'].map(l=>`<button class="course-btn ${wiz.course===l?'on':''}" onclick="wiz.course='${l}';wiz.form.course_level='${l}';render()">${l}</button>`).join('')}
+  </div>
+  <div class="grid2" style="margin:16px 0">${DOC_TYPES.map(([k,l])=>docCard(k,l)).join('')}</div>
+  <button class="btn btn-navy" onclick="runEligibility()">Run Eligibility Check &amp; Auto-Fill Form</button>
+  ${elig}
+ </div>`;
+}
+
+function MyApplications(){
+ const mine=applications.filter(a=>a.user_id===session.id);
+ const m={total:mine.length,under_review:mine.filter(a=>a.status==='under_review').length,approved:mine.filter(a=>a.status==='approved').length,needs:mine.filter(a=>a.status==='needs_resubmission').length};
+ return `<div class="wrap" style="padding-top:24px;padding-bottom:50px">
+  <h2>My Applications</h2>
+  <div class="grid4">
+   <div class="card metric"><div class="l">Total Submitted</div><div class="v">${m.total}</div></div>
+   <div class="card metric"><div class="l">Under Review</div><div class="v">${m.under_review}</div></div>
+   <div class="card metric"><div class="l">Approved</div><div class="v">${m.approved}</div></div>
+   <div class="card metric"><div class="l">Needs Action</div><div class="v">${m.needs}</div></div>
+  </div>
+  <div class="card" style="padding:0;overflow-x:auto"><table><thead><tr><th>Scheme</th><th>Submitted</th><th>Status</th><th></th></tr></thead><tbody>
+   ${mine.map(a=>{const s=SCHEMES.find(s=>s.code===a.scheme_code);return `<tr><td>${a.scheme_code} — ${esc(s?s.name:'')}</td><td>${new Date(a.created_at).toLocaleDateString('en-IN')}</td><td><span class="badge ${STATUS_CLASS[a.status]}">${STATUS_LABEL[a.status]}</span></td><td><button class="btn btn-out btn-sm" onclick='openAppModal(${a.id})'>View Details</button></td></tr>`}).join('')}
+  </tbody></table>${mine.length===0?'<div class="empty">No applications yet — start one from the Apply page.</div>':''}</div>
+  ${modal&&modal.type==='app'?AppModal():''}
+ </div>`;
+}
+function openAppModal(id){modal={type:'app',app:applications.find(a=>a.id===id)};render()}
+function AppModal(){
+ const a=modal.app,s=SCHEMES.find(s=>s.code===a.scheme_code);
+ return `<div class="modalbg" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()">
+  <h3>${a.scheme_code} — ${esc(s?s.name:'')}</h3><span class="badge ${STATUS_CLASS[a.status]}">${STATUS_LABEL[a.status]}</span>
+  <div class="grid2" style="margin-top:14px">
+   ${[['Full Name',a.full_name],['Category',a.category],['Course Level',a.course_level],['Marks %',a.marks_percentage],['Annual Income',inr(a.annual_income)],['Caste Cert. No.',a.caste_cert_number],['Bank Account No.',a.bank_account_number],['IFSC',a.ifsc_code],['Bank Name',a.bank_name]]
+    .map(([l,v])=>`<div class="field"><label>${l}</label><div style="font-size:14px;font-weight:600">${esc(v)||'—'}</div></div>`).join('')}
+  </div>
+  <h4 style="font-size:14px;margin-top:16px">Reviewer Notes</h4><p style="color:var(--slateL);font-size:13.5px">${esc(a.reviewer_notes)||'No reviewer notes yet.'}</p>
+  <button class="btn btn-out" onclick="modal=null;render()">Close</button>
+ </div></div>`;
+}
+
+function AdminDash(){
+ const total=applications.length,approved=applications.filter(a=>a.status==='approved').length,ur=applications.filter(a=>a.status==='under_review').length,rej=applications.filter(a=>a.status==='rejected').length;
+ const processed=applications.filter(a=>a.processed_at);
+ const avg=processed.length?(processed.reduce((s,a)=>s+(new Date(a.processed_at)-new Date(a.created_at)),0)/processed.length/86400000):0;
+ const breakdown=SCHEMES.map(s=>{const list=applications.filter(a=>a.scheme_code===s.code);return {code:s.code,name:s.name,total:list.length,approved:list.filter(a=>a.status==='approved').length,rejected:list.filter(a=>a.status==='rejected').length,pending:list.filter(a=>['submitted','under_review','needs_resubmission'].includes(a.status)).length}});
+ let list=applications;
+ if(adminFilter.scheme) list=list.filter(a=>a.scheme_code===adminFilter.scheme);
+ if(adminFilter.status) list=list.filter(a=>a.status===adminFilter.status);
+ if(adminFilter.search){const q=adminFilter.search.toLowerCase();list=list.filter(a=>(a.full_name||'').toLowerCase().includes(q)||(a.caste_cert_number||'').toLowerCase().includes(q))}
+ return `<div class="wrap" style="padding-top:24px;padding-bottom:50px">
+  <h2>Ministry Admin Dashboard</h2>
+  <div class="grid4">
+   <div class="card metric"><div class="l">Total Applications</div><div class="v">${total}</div></div>
+   <div class="card metric"><div class="l">Approved</div><div class="v">${approved}</div></div>
+   <div class="card metric"><div class="l">Under Review</div><div class="v">${ur}</div></div>
+   <div class="card metric"><div class="l">Rejected</div><div class="v">${rej}</div></div>
+  </div>
+  <div class="card" style="margin-bottom:22px">⏱ Average processing time: <strong>${avg.toFixed(1)} days</strong></div>
+  <h2>Scheme Breakdown</h2>
+  <div class="card" style="padding:0;overflow-x:auto;margin-bottom:26px"><table><thead><tr><th>Scheme</th><th>Total</th><th>Approved</th><th>Rejected</th><th>Pending</th></tr></thead><tbody>
+   ${breakdown.map(b=>`<tr><td>${b.code} — ${esc(b.name)}</td><td>${b.total}</td><td>${b.approved}</td><td>${b.rejected}</td><td>${b.pending}</td></tr>`).join('')}
+  </tbody></table></div>
+  <h2>All Applications</h2>
+  <div class="filterbar">
+   <input placeholder="Search name or cert #" value="${esc(adminFilter.search)}" oninput="adminFilter.search=this.value;render()">
+   <select onchange="adminFilter.scheme=this.value;render()"><option value="">All schemes</option>${SCHEMES.map(s=>`<option value="${s.code}" ${adminFilter.scheme===s.code?'selected':''}>${s.code}</option>`).join('')}</select>
+   <select onchange="adminFilter.status=this.value;render()"><option value="">All statuses</option>${Object.entries(STATUS_LABEL).map(([k,v])=>`<option value="${k}" ${adminFilter.status===k?'selected':''}>${v}</option>`).join('')}</select>
+  </div>
+  <div class="card" style="padding:0;overflow-x:auto"><table><thead><tr><th>Applicant</th><th>Scheme</th><th>Cert #</th><th>Status</th><th></th></tr></thead><tbody>
+   ${list.map(a=>`<tr><td>${esc(a.full_name)}</td><td>${a.scheme_code}</td><td>${esc(a.caste_cert_number)||'—'}</td><td><span class="badge ${STATUS_CLASS[a.status]}">${STATUS_LABEL[a.status]}</span></td><td><button class="btn btn-navy btn-sm" onclick="openAdminModal(${a.id})">Verify / Action</button></td></tr>`).join('')}
+  </tbody></table>${list.length===0?'<div class="empty">No applications match these filters.</div>':''}</div>
+  ${modal&&modal.type==='admin'?AdminModal():''}
+ </div>`;
+}
+function openAdminModal(id){const app=applications.find(a=>a.id===id);modal={type:'admin',app};adminDraft={status:app.status==='submitted'?'under_review':app.status,notes:app.reviewer_notes||''};render()}
+function AdminModal(){
+ const a=modal.app;
+ return `<div class="modalbg" onclick="modal=null;render()"><div class="modal" onclick="event.stopPropagation()">
+  <h3>${esc(a.full_name)}</h3><p style="color:var(--slateL);margin-top:-8px;font-size:13.5px">${a.scheme_code} application · submitted ${new Date(a.created_at).toLocaleDateString('en-IN')}</p>
+  <div class="grid2">
+   ${[['Category',a.category],['Course Level',a.course_level],['Marks %',a.marks_percentage],['Annual Income',inr(a.annual_income)],['Caste Cert. No.',a.caste_cert_number],['Bank Account No.',a.bank_account_number],['IFSC',a.ifsc_code],['Bank Name',a.bank_name]]
+    .map(([l,v])=>`<div class="field"><label>${l}</label><div style="font-size:14px;font-weight:600">${esc(v)||'—'}</div></div>`).join('')}
+  </div>
+  <div class="field"><label>Decision</label><select onchange="adminDraft.status=this.value">
+   <option value="under_review" ${adminDraft.status==='under_review'?'selected':''}>Mark Under Review</option>
+   <option value="approved" ${adminDraft.status==='approved'?'selected':''}>Approve</option>
+   <option value="needs_resubmission" ${adminDraft.status==='needs_resubmission'?'selected':''}>Request Resubmission</option>
+   <option value="rejected" ${adminDraft.status==='rejected'?'selected':''}>Reject</option>
+  </select></div>
+  <div class="field"><label>Review Notes</label><textarea rows="3" oninput="adminDraft.notes=this.value">${esc(adminDraft.notes)}</textarea></div>
+  <button class="btn btn-saf" onclick="saveDecision()">Save Decision</button>
+  <button class="btn btn-out" onclick="modal=null;render()">Cancel</button>
+ </div></div>`;
+}
+
+function render(){
+ if((route==='apply'||route==='applications') && (!session||session.role!=='student')){route='login'}
+ if(route==='admin' && (!session||session.role!=='admin')){route='login'}
+ let body='';
+ if(route==='home') body=Home();
+ else if(route==='login') body=Login();
+ else if(route==='register') body=Register();
+ else if(route==='apply') body=Apply();
+ else if(route==='applications') body=MyApplications();
+ else if(route==='admin') body=AdminDash();
+ document.getElementById('app').innerHTML=Banner()+Nav()+body+Footer();
+}
+render();
+</script>
+</body>
+</html>
